@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Agni AI DS — Department Hub</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <!-- Header: brand on the left, college logo placeholder on the right -->
+        <header class="site-header">
+            <div class="brand">
+                <!-- Edit the app name below: replace "Agni AI DS" with your app name -->
+                <h1 class="app-name">Agni AI DS</h1>
+                <!-- Edit the tagline below: replace this short line with your tagline -->
+                <p class="tagline">A Digital space for AI & Data Science students.</p>
+            </div>
+
+            <!-- College logo image -->
+            <div class="logo-wrapper">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Agni Institution Logo" class="college-logo">
+            </div>
+        </header>
+
+        <!-- Main hero section with description and action buttons -->
+        <main class="hero">
+            <div class="hero-content">
+                <p class="lead">Agni Ai DS is a student-driven platform created to showcase creativity, projects, achievements and ideas within the Artificial Intelligence & Data Science Department.</p>
+
+                <!-- Call-to-action buttons -->
+            <div class = "auth-buttons">
+                <a href="{{ url_for('login') }}" class="btn">Login</a>
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Register</a>
+            </div>
+
+
+            </div>
+
+
+            </div>
+        </main>
+    </body>
+</html>

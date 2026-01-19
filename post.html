@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Post a Skill — Agni Connect</title>
+
+        <style>
+            /* ==================================================
+               Responsive Post Skill Form Stylesheet
+               Professional educational design matching Agni Connect
+               - Mobile-first approach
+               - Centered card layout with form inputs
+               - min-width breakpoints for tablet and desktop
+               ================================================== */
+
+            :root {
+              --primary: #1e40af;
+              --primary-light: #3b82f6;
+              --primary-dark: #1e3a8a;
+              --accent: #0ea5e9;
+              --accent-light: #06b6d4;
+              --success: #10b981;
+              --text-dark: #0f172a;
+              --text-light: #f8fafc;
+              --text-muted: #64748b;
+              --bg-white: #ffffff;
+              --bg-soft: #f8fafc;
+              --border-light: rgba(15, 23, 42, 0.08);
+              --border-input: rgba(15, 23, 42, 0.15);
+              --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+              --shadow-md: 0 4px 12px rgba(30, 64, 175, 0.15);
+              --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+              --radius: 12px;
+            }
+
+            * {
+              box-sizing: border-box;
+            }
+
+            html, body {
+              height: 100%;
+            }
+
+            /* ===== BODY & BACKGROUND ===== */
+            body {
+              margin: 0;
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0e7ff 100%);
+              color: var(--text-dark);
+              padding: 1.5rem 1rem;
+              line-height: 1.6;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              overflow-x: hidden;
+              min-height: 100vh;
+            }
+
+            /* Decorative gradient background overlay */
+            body::before {
+              content: '';
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                          radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+              pointer-events: none;
+              z-index: -1;
+            }
+
+            /* ===== POST SKILL CONTAINER ===== */
+            .post-wrapper {
+              width: 100%;
+              max-width: 500px;
+              position: relative;
+              z-index: 1;
+              animation: fadeInUp 0.8s ease-out;
+            }
+
+            /* ===== POST SKILL CARD ===== */
+            .post-card {
+              background: var(--bg-white);
+              border-radius: var(--radius);
+              padding: 2rem 1.5rem;
+              box-shadow: var(--shadow-lg);
+              border: 1px solid var(--border-light);
+            }
+
+            /* ===== HEADER SECTION ===== */
+            .post-header {
+              text-align: center;
+              margin-bottom: 2rem;
+              animation: slideInDown 0.6s ease-out;
+            }
+
+            .post-title {
+              margin: 0 0 0.5rem 0;
+              font-size: 1.75rem;
+              font-weight: 800;
+              background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent) 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              letter-spacing: -0.02em;
+            }
+
+            .post-subtitle {
+              margin: 0;
+              color: var(--text-muted);
+              font-size: 0.9rem;
+              font-weight: 500;
+              letter-spacing: 0.3px;
+            }
+
+            /* ===== FORM SECTION ===== */
+            .post-form {
+              display: flex;
+              flex-direction: column;
+              gap: 1.25rem;
+              animation: slideUp 0.8s ease-out 0.2s both;
+            }
+
+            /* Form group for consistent spacing */
+            .form-group {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+            }
+
+            /* ===== LABELS ===== */
+            .form-label {
+              margin: 0;
+              font-size: 0.9rem;
+              font-weight: 600;
+              color: var(--text-dark);
+              letter-spacing: 0.3px;
+            }
+
+            /* ===== INPUT FIELDS & SELECTS ===== */
+            .form-input,
+            .form-select {
+              padding: 0.85rem 1rem;
+              border: 2px solid var(--border-input);
+              border-radius: 10px;
+              font-size: 0.95rem;
+              font-family: inherit;
+              color: var(--text-dark);
+              background: var(--bg-white);
+              transition: all 0.3s ease;
+              letter-spacing: 0.3px;
+            }
+
+            /* Input and select focus state */
+            .form-input:focus,
+            .form-select:focus {
+              outline: none;
+              border-color: var(--primary-light);
+              box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+              background: var(--bg-soft);
+            }
+
+            /* Input placeholder styling */
+            .form-input::placeholder,
+            .form-textarea::placeholder {
+              color: var(--text-muted);
+              opacity: 0.7;
+            }
+
+            /* Dropdown styling */
+            .form-select {
+              appearance: none;
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231e40af' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+              background-repeat: no-repeat;
+              background-position: right 1rem center;
+              padding-right: 2.5rem;
+              cursor: pointer;
+            }
+
+            .form-select option {
+              color: var(--text-dark);
+              background: var(--bg-white);
+              padding: 0.5rem;
+            }
+
+            /* ===== TEXTAREA ===== */
+            .form-textarea {
+              padding: 0.85rem 1rem;
+              border: 2px solid var(--border-input);
+              border-radius: 10px;
+              font-size: 0.95rem;
+              font-family: inherit;
+              color: var(--text-dark);
+              background: var(--bg-white);
+              transition: all 0.3s ease;
+              letter-spacing: 0.3px;
+              resize: vertical;
+              min-height: 100px;
+              max-height: 200px;
+            }
+            .post-form {
+              max-width: 420px;
+              margin: 40px auto;
+              padding: 28px;
+              background: var(--bg-white);
+              border-radius: var(--radius);
+              box-shadow: var(--shadow-md);
+            }
+            .post-form h1{
+              font-size: 22px;
+              font-weight: 700;
+              color: var(--text-dark);
+              text-align: center;
+              margin-bottom: 6px;
+            }
+            .post-form p{
+              font-size: 14px;
+              color: var(--text-muted);
+              text-align: center;
+              margin-bottom: 20px;
+            }
+            .post-form label{
+              font-size: 14px;
+              font-weight: 600;
+              color: var(--text-dark);
+              margin-bottom: 6px;
+              display: block;
+            }
+            .post-form textarea{
+              width: 100%;
+              height: 100px;
+              padding: 10px;
+              border: 1px solid var(--border-input);
+              border-radius: 6px;
+              font-size: 14px;
+              color: var(--text-dark);
+              resize: vertical;
+            }
+            .post-form textarea:focus{
+              border-color: var(--primary-light);
+              box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+              background: var(--bg-soft);
+            }
+            .post-form.file-upload{
+              border: 2px dashed var(--border-input);
+              padding: 18pc;
+              border-radius: 6px;
+              text-align: center;
+              background: var(--bg-white);
+              margin-bottom: 18px;
+            }
+            .post-form file-upload:hover{
+              border-color: var(--primary-light);
+              background: var(--bg-soft);
+              cursor: pointer;
+            }
+            .post-form input[type="file"]{
+              display: none;
+            }
+            .post-form.upload-btn{
+              display: inline-block;
+              padding: 10px 18px;
+              background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+              color: var(--bg-white);
+              border: none;
+              border-radius: 6px;
+              font-size: 14px;
+              font-weight: 600;
+              cursor: pointer;
+              box-shadow: var(--shadow-sm);
+              transition: all 0.3s ease;
+            }
+            .post-form.upload-btn:hover{
+              background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-light) 100%);
+              box-shadow: var(--shadow-md);
+            }
+            .post-form.upload-btn:active{
+              box-shadow: var(--shadow-sm);
+            }
+
+
+            .back-link{
+              margin: left 1rem;
+              color: var(--primary-light);
+              font-weight: 600;
+              text-decoration: none;
+            }
+            .back-link:hover{
+              color: var(--accent);
+              text-decoration: underline;
+            }
+            .form-textarea:focus {
+              outline: none;
+              border-color: var(--primary-light);
+              box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+              background: var(--bg-soft);
+            }
+
+            /* ===== HELPER TEXT ===== */
+            .helper-text {
+              margin: 0;
+              font-size: 0.8rem;
+              color: var(--text-muted);
+              font-weight: 500;
+            }
+            /* Preview box */
+          .preview-box {
+              width: 100%;
+              height: 180px;
+              border-radius: 12px;
+              border: 2px dashed #c7d2fe;
+              background: #f8fafc;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              overflow: hidden;
+              margin-bottom: 12px;
+              color: #6b7280;
+              font-size: 14px;
+          }
+
+          /* Image inside preview */
+          .preview-box img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+          }
+
+          /* Upload button — make it obvious */
+          .upload-btn {
+              display: inline-block;
+              width: 100%;
+              text-align: center;
+              padding: 12px;
+              font-size: 15px;
+              font-weight: 600;
+              color: #ffffff;
+              background: linear-gradient(135deg, #3b82f6, #2563eb);
+              border-radius: 10px;
+              cursor: pointer;
+              transition: transform 0.1s, box-shadow 0.2s;
+          }
+
+          .upload-btn:hover {
+              box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+          }
+
+          .upload-btn:active {
+              transform: scale(0.98);
+          }
+
+
+            /* ===== SUBMIT BUTTON ===== */
+            .btn-submit {
+              padding: 0.95rem 2rem;
+              border-radius: 10px;
+              font-size: 0.95rem;
+              font-weight: 700;
+              letter-spacing: 0.3px;
+              border: 0;
+              cursor: pointer;
+              background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+              color: var(--bg-white);
+              box-shadow: var(--shadow-md);
+              transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+              position: relative;
+              overflow: hidden;
+              margin-top: 0.5rem;
+              text-transform: uppercase;
+            }
+
+            /* Button ripple effect on hover */
+            .btn-submit::before {
+              content: '';
+              position: absolute;
+              margin: center;
+              top: 50%;
+              left: 50%;
+              width: 0;
+              height: 0;
+              background: rgba(255, 255, 255, 0.2);
+              border-radius: 50%;
+              transform: translate(-50%, -50%);
+              transition: width 0.6s, height 0.6s;
+            }
+
+            .btn-submit:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 12px 28px rgba(30, 64, 175, 0.35);
+              background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-light) 100%);
+            }
+
+            .btn-submit:active {
+              transform: translateY(-1px);
+            }
+
+            .btn-submit:active::before {
+              width: 300px;
+              height: 300px;
+            }
+
+            /* ===== FOOTER SECTION ===== */
+            .post-footer {
+              margin-top: 1.5rem;
+              padding-top: 1.5rem;
+              border-top: 1px solid var(--border-light);
+              text-align: center;
+              animation: fadeInUp 0.8s ease-out 0.4s both;
+            }
+            .site-footer {
+              text-align: center;
+              padding: 16px;
+              font-size: 14px;
+              color: #888;
+              border-top: 1px solid #ddd;
+            }
+
+
+            .post-footer-text {
+              margin: 0;
+              color: var(--text-muted);
+              font-size: 0.9rem;
+            }
+            input[type="file"] {
+              display: none;
+            }
+            /* ===== BACK LINK ===== */
+            .back-link {
+              color: var(--primary-light);
+              text-decoration: none;
+              font-weight: 600;
+              transition: all 0.3s ease;
+              position: relative;
+              display: inline-block;
+              margin-left: 0.3rem;
+            }
+
+            .back-link::after {
+              content: '';
+              position: absolute;
+              bottom: -2px;
+              left: 0;
+              width: 0;
+              height: 2px;
+              background: linear-gradient(90deg, var(--primary-light), var(--accent));
+              transition: width 0.3s ease;
+            }
+
+            .back-link:hover {
+              color: var(--accent);
+            }
+
+            .back-link:hover::after {
+              width: 100%;
+            }
+
+            /* ===== ANIMATIONS ===== */
+            @keyframes slideInDown {
+              from {
+                opacity: 0;
+                transform: translateY(-20px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes slideUp {
+              from {
+                opacity: 0;
+                transform: translateY(20px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            @keyframes fadeInUp {
+              from {
+                opacity: 0;
+                transform: translateY(15px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            /* ===== TABLET (700px+) ===== */
+            @media (min-width: 700px) {
+              body {
+                padding: 2rem;
+              }
+
+              .post-card {
+                padding: 2.5rem 2rem;
+              }
+
+              .post-title {
+                font-size: 2rem;
+              }
+
+              .post-subtitle {
+                font-size: 0.95rem;
+              }
+
+              .form-input,
+              .form-select,
+              .form-textarea {
+                padding: 0.95rem 1.1rem;
+                font-size: 1rem;
+              }
+
+              .form-textarea {
+                min-height: 120px;
+              }
+
+              .btn-submit {
+                padding: 1rem 2.25rem;
+                font-size: 1rem;
+              }
+            }
+
+            /* ===== DESKTOP (1000px+) ===== */
+            @media (min-width: 1000px) {
+              body {
+                padding: 2.5rem;
+                background: linear-gradient(135deg, #e0f2fe 0%, #e0e7ff 50%, #fce7f3 100%);
+                min-height: 100vh;
+              }
+
+              .post-wrapper {
+                max-width: 550px;
+              }
+
+              .post-card {
+                padding: 3rem 2.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.5);
+              }
+
+              .post-title {
+                font-size: 2.25rem;
+                margin-bottom: 0.75rem;
+              }
+
+              .post-subtitle {
+                font-size: 1rem;
+              }
+
+              .form-input,
+              .form-select,
+              .form-textarea {
+                padding: 1rem 1.2rem;
+                font-size: 1.05rem;
+              }
+
+              .form-textarea {
+                min-height: 140px;
+              }
+
+              .btn-submit {
+                padding: 1.1rem 2.5rem;
+                font-size: 1.05rem;
+              }
+            }
+
+            /* ===== ACCESSIBILITY ===== */
+            @media (prefers-reduced-motion: reduce) {
+              * {
+                animation: none !important;
+                transition: none !important;
+              }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Main post skill container with centered card layout -->
+         <form action="{{ url_for('post') }}" method="POST" enctype="multipart/form-data">
+        <div class="post-wrapper">
+            <!-- Post skill card: contains header, form, and footer -->
+            <div class="post-card">
+
+                <!-- Header section with title and subtitle -->
+                <div class="post-header">
+                    <h1 class="post-title">Post Your Creation</h1>
+                    <p class="post-subtitle">Help others discover what we're great at</p>
+                </div>
+
+                <!-- Post skill form with all required fields -->
+                    <div class="file-upload">
+          <div class="preview-box" id="imagePreview">
+              <span>Tap "Uplaod Image" to add a image</span>
+          </div>
+          <input type="hidden" name="status" value="active">
+          <label for="image" class="upload-btn">
+              Upload Image
+          </label>
+          <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)">
+
+          <div class="upload-hint">
+              JPG or PNG · Max 1 image
+          </div>
+      </div>
+
+                    <!-- Description textarea group -->
+                    <div class="form-group">
+                        <label for="caption class="form-label">Description</label>
+                        <textarea
+                            id="caption"
+                            name="caption"
+                            class="form-textarea"
+                            placeholder="Tell others about your skill, experience level, and what you're looking for..."
+                            required
+                        ></textarea>
+                        <p class="helper-text">Share details about your post (max 1000 characters)</p>
+                    </div>
+
+                    <!-- Category dropdown selection -->
+                    <div class="form-group">
+                        <label for="category" class="form-label">Category</label>
+                        <select
+                            id="category"
+                            name="category"
+                            class="form-select"
+
+                            required
+                        >
+                            <option value=""></option>
+                            <option value="event">Event</option>
+                            <option value="hackathon">Hackathon</option>
+                            <option value="personal">Personal Development</option>
+                            <option value="presentation">Presentation</option>
+                            <option value="project">Mini Project</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <p class="helper-text">Choose whether your post is any of the above</p>
+                    </div>
+
+
+
+                    <!-- Submit button with gradient background and hover effects -->
+                    <button type="submit" class="btn-submit">Share Experience</button>
+
+                <!-- Footer section with back link -->
+                <div class="post-footer">
+                    <p class="post-footer-text">
+                        Want to browse instead?
+                        <a href="{{ url_for('skills') }}" class="back-link">View Posts</a>
+                    </p>
+                </div>
+                </form>
+            </div>
+
+        </div>
+
+      <script>
+function previewImage(event) {
+    const preview = document.getElementById("imagePreview");
+    preview.innerHTML = "";
+
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    img.onload = () => URL.revokeObjectURL(img.src);
+
+    preview.appendChild(img);
+}
+</script>
+    <footer class="site-footer">
+          © 2026 Agni AI DS. Built by Raj G. All rights reserved.
+        </footer>
+
+    </body>
+</html>
