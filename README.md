@@ -1,65 +1,75 @@
-# Agni AI DS 🔥
-
-**Agni AI DS** is an academic and project-based website built to represent learning, experimentation, and growth in **Artificial Intelligence and Data Science**.
-
-The platform serves as a centralized space to showcase projects, concepts, and structured learning aligned with a B.Tech AI & DS curriculum.
-
-🌐 **Live Website:**  
-https://gsraj.pythonanywhere.com
-
----
-
-## 🎯 Purpose
-
-- Create a strong academic and professional digital presence
-- Showcase AI & Data Science projects and concepts
-- Document learning in a structured and meaningful way
-- Act as a long-term foundation for future research, internships, and development work
+<div align="center">
+  <h1>🏛️ Agni AI DS</h1>
+  <p><strong>Student Discussion & Showcase Forum for AI & DS Department</strong></p>
+  <p>Share projects, events, hackathons, and achievements with your batchmates</p>
+  <p>
+    <img alt="Python" src="https://img.shields.io/badge/python-3.13-blue" />
+    <img alt="Flask" src="https://img.shields.io/badge/flask-3.0-black" />
+    <img alt="SQLite" src="https://img.shields.io/badge/sqlite-3-blue" />
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-orange" />
+  </p>
+</div>
 
 ---
 
-## 🧠 Features
+## 📖 The Story
 
-- Clean and minimal UI focused on clarity
-- Structured sections for learning and projects
-- Responsive design for mobile
-- Deployed and publicly accessible
-- Built with scalability in mind for future backend expansion
+College life is full of moments worth sharing — a hackathon you won, a project you're proud of, a presentation that went well, an event you organized. But there was no single place where AI & DS students at Agni College could put it all together and see what their batchmates were up to.
+
+Most of the communication happened in scattered WhatsApp groups. Posts got buried. Achievements went unnoticed. Projects were finished and never seen again.
+
+I wanted to fix that.
+
+Agni AI DS is a dedicated space for our department — a feed where students can post what they're building, share what they've learned, and see what everyone else is doing. It's like a living gallery of everything the AI & DS batch is working on. One place to showcase, connect, and inspire each other.
+
+---
+
+## ✨ Features
+
+- **Student registration** — sign up with your college email (`@act.edu.in`)
+- **Create posts** — share images with captions about your projects, events, and achievements
+- **Category tagging** — Event, Hackathon, Presentation, Mini Project, Personal Development, and more
+- **Feed dashboard** — responsive card grid showing every post from the department
+- **Like / Unlike** — one-click toggle with instant updates, no page reload
+- **Image lightbox** — click any image to view it full-size in a modal
+- **Admin controls** — designated admins can delete any post
+- **Responsive design** — works on mobile, tablet, and desktop
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML5, CSS3, JavaScript  
-- **Backend:** Python (Flask), Sqlite3  
-- **Deployment:** PythonAnywhere (Free Tier)
+| Layer      | Technology                         |
+| ---------- | ---------------------------------- |
+| Backend    | Python 3.13, Flask                 |
+| Database   | SQLite (raw sqlite3 module)        |
+| Auth       | Werkzeug password hashing (scrypt) |
+| Frontend   | HTML5, CSS3, Vanilla JavaScript    |
+| Uploads    | Werkzeug secure_filename           |
 
 ---
 
-## 🚀 Deployment
+## 📍 The Process
 
-The website is successfully deployed on **PythonAnywhere** and is live for public access.
+I noticed something in my first year — people were doing cool stuff but no one knew about it. A guy built a gesture-controlled robot for the tech fest. A girl trained a model that predicted stock prices. But unless you were in the right WhatsApp group at the right time, you'd never know.
 
-This deployment demonstrates:
-- Backend integration
-- Real-world hosting experience
-- Production-ready structure for student projects
+I wanted a feed. Something simple — post an image, write a caption, let people react. No algorithm, no ads, no notifications spam. Just a chronological feed of what the batch is up to.
 
----
+Built it with Flask because it's lightweight and perfect for a project like this. SQLite for the database because it's zero-config and runs anywhere. The frontend is all vanilla — no frameworks, no build tools, just clean HTML and CSS with a few lines of JavaScript for the like button and image modal.
 
-## 👨‍💻 Author
-
-**Raj G**  
-B.Tech – Artificial Intelligence & Data Science  
-Agni College of Technology  
+The result is a platform that does one thing well: **let AI & DS students share what they're building with each other.**
 
 ---
 
-## 📜 License
+## 🚀 Running Locally
 
-This project is licensed under the **MIT License**.  
-You are free to learn from the code with proper attribution.
+```bash
+pip install flask werkzeug
+flask --app app run
+```
 
 ---
 
-© 2026 Agni AI DS. All rights reserved.
+<p align="center">
+  Built with care by <strong>Raj G.</strong>
+</p>
